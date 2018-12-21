@@ -1,0 +1,9 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["react-app", "prettier", "prettier/flowtype", "prettier/react"],
+  "rules": {
+    "indent": ["error", 2],
+    "prettier/prettier": "error"
+  },
+  "plugins": ["flowtype", "prettier"]
+}

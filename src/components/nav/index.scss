@@ -1,0 +1,31 @@
+@import 'scss/base/fun';
+
+.page-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid $color-border;
+}
+
+.nav-inner {
+  width: 900px;
+  height: $navHeight;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  .nav-link {
+    height: $navHeight;
+    line-height: $navHeight;
+    padding: 0 10px;
+    display: inline-block;
+    &.nav-link-active {
+      color: $color-main;
+    }
+  }
+  .nav-logo {
+    height: $navHeight;
+    line-height: $navHeight;
+  }
+}
