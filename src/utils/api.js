@@ -1,9 +1,9 @@
 const API = {
+  login: '/api/user/login',
+  posts: '/api/posts',
   auth: {
-    login: '/api/user/login',
     register: '/api/user/register',
-    post: '/api/post',
-    posts: '/api/posts'
+    post: '/api/post'
   }
 };
 export default API;

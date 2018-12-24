@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Page from 'components/page';
 import { post } from 'utils/http';
 import API from 'utils/api';
+import config from 'utils/config';
 
 import './index.scss';
 
@@ -23,13 +24,19 @@ export default class LoginPage extends React.Component {
 
   submit(e) {
     e.preventDefault();
+    let { history } = this.props;
 
-    post(API.auth.login, {
+    post(API.login, {
       username: this.state.username,
       password: this.state.password
     })
       .then(res => {
-        console.log(res);
+        if (res.status == 200) {
+          let { data } = res;
+          let { token } = data;
+          localStorage.setItem(config.keys.token, token);
+          history.replace('/');
+        }
       })
       .catch(e => {
         console.log(e);
@@ -38,7 +45,7 @@ export default class LoginPage extends React.Component {
 
   render() {
     return (
-      <section>
+      <Page>
         <div className='form-img' />
         <form
           className='form-content'
@@ -50,6 +57,7 @@ export default class LoginPage extends React.Component {
               label='用户名'
               name='name'
               id='username'
+              autoComplete='on'
               onChange={this.nameChange.bind(this)}
               defaultValue=''
             />
@@ -60,6 +68,7 @@ export default class LoginPage extends React.Component {
               id='password'
               name='password'
               type='password'
+              autoComplete='on'
               onChange={this.passwordChange.bind(this)}
               defaultValue=''
             />
@@ -75,7 +84,7 @@ export default class LoginPage extends React.Component {
             </Button>
           </div>
         </form>
-      </section>
+      </Page>
     );
   }
 }
