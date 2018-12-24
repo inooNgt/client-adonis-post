@@ -1,14 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Page from 'components/page';
 import { post } from 'utils/http';
 import API from 'utils/api';
 import config from 'utils/config';
+import actions from 'store/actions';
 
 import './index.scss';
 
-export default class LoginPage extends React.Component {
+class _Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
@@ -36,6 +38,8 @@ export default class LoginPage extends React.Component {
           let { token } = data;
           localStorage.setItem(config.keys.token, token);
           history.replace('/');
+          console.log(this);
+          this.props.setLoginStatus(true);
         }
       })
       .catch(e => {
@@ -56,7 +60,6 @@ export default class LoginPage extends React.Component {
             <TextField
               label='用户名'
               name='name'
-              id='username'
               autoComplete='on'
               onChange={this.nameChange.bind(this)}
               defaultValue=''
@@ -65,7 +68,6 @@ export default class LoginPage extends React.Component {
           <div className='form-row'>
             <TextField
               label='密码'
-              id='password'
               name='password'
               type='password'
               autoComplete='on'
@@ -88,3 +90,24 @@ export default class LoginPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    logined: state.logined
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setLoginStatus: (...args) => dispatch(actions.setLoginStatus(...args))
+  };
+};
+
+console.log('actions', actions.setLoginStatus());
+
+const LoginPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_Login);
+
+export default LoginPage;

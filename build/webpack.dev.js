@@ -166,6 +166,7 @@ module.exports = {
       components: resolve('../src/components'),
       src: resolve('../src'),
       utils: resolve('../src/utils'),
+      store: resolve('../src/store'),
       scss: resolve('../src/scss')
     }
   },

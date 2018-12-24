@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { get } from 'utils/http';
 import API from 'utils/api';
-import config from 'utils/config';
 import Page from 'components/page';
+import config from 'utils/config';
 
 import './index.scss';
 
-export default class HomePage extends React.Component {
+class _HomePage extends React.Component {
   state = { posts: [] };
   componentDidMount() {
     this.loadData();
@@ -36,3 +37,13 @@ export default class HomePage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    logined: state.logined
+  };
+};
+
+const HomePage = connect(mapStateToProps)(_HomePage);
+
+export default HomePage;

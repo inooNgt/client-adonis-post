@@ -1,10 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './index.scss';
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
+  state = {
+    list: [
+      {
+        title: 'Posts',
+        path: '/'
+      },
+      {
+        title: 'Login',
+        path: '/login'
+      }
+    ]
+  };
   render() {
-    const { list, className, children } = this.props;
+    let { list } = this.state;
+    const { className, children } = this.props;
 
     return (
       <nav className={`page-nav ${className || ''}`}>
@@ -28,3 +42,13 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+// const mapStateToProps = state => {
+//   return {
+//     logined: state.logined
+//   };
+// };
+
+// const Nav = connect(mapStateToProps)(_Nav);
+
+export default Nav;
