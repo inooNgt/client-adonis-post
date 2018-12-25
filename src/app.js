@@ -22,11 +22,11 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className='page-container'>
-            <Nav />
-            <Route
-              render={({ location }) => {
-                return (
+          <Route
+            render={({ location }) => {
+              return (
+                <div className='page-container'>
+                  <Nav location={location} />
                   <TransitionGroup>
                     <CSSTransition
                       key={location.key}
@@ -55,10 +55,10 @@ class App extends React.Component {
                       </div>
                     </CSSTransition>
                   </TransitionGroup>
-                );
-              }}
-            />
-          </div>
+                </div>
+              );
+            }}
+          />
         </Router>
       </Provider>
     );

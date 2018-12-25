@@ -7,7 +7,7 @@ import config from 'utils/config';
 
 import './index.scss';
 
-class _HomePage extends React.Component {
+class HomePage extends React.Component {
   state = { posts: [] };
   componentDidMount() {
     this.loadData();
@@ -44,6 +44,4 @@ const mapStateToProps = state => {
   };
 };
 
-const HomePage = connect(mapStateToProps)(_HomePage);
-
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);

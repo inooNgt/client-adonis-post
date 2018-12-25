@@ -16,10 +16,27 @@ class Nav extends React.Component {
       }
     ]
   };
+  componentWillReceiveProps(newProps) {
+    console.log('newProps', newProps);
+    let { logined } = newProps;
+    if (logined) {
+      this.setState({
+        list: [
+          {
+            title: 'Posts',
+            path: '/'
+          },
+          {
+            title: 'Logout',
+            path: '/login'
+          }
+        ]
+      });
+    }
+  }
   render() {
     let { list } = this.state;
-    const { className, children } = this.props;
-
+    const { className, location } = this.props;
     return (
       <nav className={`page-nav ${className || ''}`}>
         <div className='nav-inner'>
@@ -28,6 +45,7 @@ class Nav extends React.Component {
             {list.map((item, index) => (
               <NavLink
                 exact
+                location={location}
                 className='nav-link'
                 activeClassName='nav-link-active'
                 to={item.path}
@@ -43,12 +61,12 @@ class Nav extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     logined: state.logined
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    logined: state.logined
+  };
+};
 
-// const Nav = connect(mapStateToProps)(_Nav);
+export default connect(mapStateToProps)(Nav);
 
-export default Nav;
+// export default Nav;

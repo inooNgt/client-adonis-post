@@ -10,7 +10,7 @@ import actions from 'store/actions';
 
 import './index.scss';
 
-class _Login extends React.Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
@@ -38,7 +38,6 @@ class _Login extends React.Component {
           let { token } = data;
           localStorage.setItem(config.keys.token, token);
           history.replace('/');
-          console.log(this);
           this.props.setLoginStatus(true);
         }
       })
@@ -103,11 +102,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-console.log('actions', actions.setLoginStatus());
-
-const LoginPage = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(_Login);
-
-export default LoginPage;
+)(LoginPage);
