@@ -1,39 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { get } from 'utils/http';
 import API from 'utils/api';
 import Page from 'components/page';
 
 import './index.scss';
 
-class HomePage extends React.Component {
-  state = { posts: [] };
+class MyPage extends React.Component {
+  state = { user: [] };
   componentDidMount() {
     this.loadData();
   }
   loadData() {
-    API.posts().then(res => {
+    API.user().then(res => {
       if (res.status === 200) {
         let { data } = res;
         this.setState({
-          posts: data.posts
+          user: data.user
         });
       }
     });
   }
   render() {
-    let { posts } = this.state;
-    return (
-      <Page>
-        {posts.map((item, k) => {
-          return (
-            <h3 key={item.id}>
-              {k + 1}、{item.post_title}
-            </h3>
-          );
-        })}
-        home
-      </Page>
-    );
+    let { user } = this.state;
+    return <Page>my</Page>;
   }
 }
 
@@ -43,4 +33,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(MyPage);

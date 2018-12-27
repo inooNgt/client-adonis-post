@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Page from 'components/page';
-import { post } from 'utils/http';
 import API from 'utils/api';
-import config from 'utils/config';
-import actions from 'store/actions';
 
 import './index.scss';
 
@@ -28,7 +25,7 @@ class LoginPage extends React.Component {
     e.preventDefault();
     let { history } = this.props;
 
-    post(API.login, {
+    API.login({
       username: this.state.username,
       password: this.state.password
     })
@@ -37,8 +34,8 @@ class LoginPage extends React.Component {
           let { data } = res;
           let { token } = data;
           localStorage.setItem(config.keys.token, token);
-          history.replace('/');
           this.props.setLoginStatus(true);
+          history.replace('/');
         }
       })
       .catch(e => {

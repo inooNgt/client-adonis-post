@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from 'utils/config';
-import API from 'utils/api';
+import APIMAP from 'utils/apimap';
 import Qs from 'qs';
 
 const http = options => {
@@ -14,8 +14,6 @@ const http = options => {
 
 const get = (url, options) => {
   options = setHeaders(url, options);
-
-  // console.log("options", options);
 
   if (typeof url !== 'undefined') {
     url = config.host + url;
@@ -53,9 +51,6 @@ const post = (url, data, options) => {
   //   );
   // }
 
-  // console.log("post options:", options, url);
-  // console.log("post data:", data);
-
   return axios.post(url, data, options);
 };
 
@@ -80,8 +75,8 @@ function setHeaders(url, options) {
 
 function checkAuth(url) {
   let result = false;
-  for (let key in API.auth) {
-    if (API.auth[key] === url) {
+  for (let key in APIMAP.auth) {
+    if (APIMAP.auth[key] === url) {
       result = true;
       break;
     }

@@ -1,9 +1,10 @@
+import { get, post } from 'utils/http';
+import APIMAP from 'utils/apimap';
+
 const API = {
-  login: '/api/user/login',
-  posts: '/api/posts',
-  auth: {
-    register: '/api/user/register',
-    post: '/api/post'
-  }
+  login: param => post(APIMAP.login, param),
+  user: () => get(APIMAP.auth.user, {}),
+  posts: () => get(APIMAP.posts, {})
 };
+
 export default API;

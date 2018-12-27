@@ -17,7 +17,6 @@ class Nav extends React.Component {
     ]
   };
   componentWillReceiveProps(newProps) {
-    console.log('newProps', newProps);
     let { logined } = newProps;
     if (logined) {
       this.setState({
@@ -27,8 +26,8 @@ class Nav extends React.Component {
             path: '/'
           },
           {
-            title: 'Logout',
-            path: '/login'
+            title: 'MY',
+            path: '/my'
           }
         ]
       });

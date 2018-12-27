@@ -6,6 +6,7 @@ const routes = [
     exact: true,
     component: asyncComponent(() => import('./pages/home'))
   },
+  { path: '/my', component: asyncComponent(() => import('./pages/my')) },
   { path: '/login', component: asyncComponent(() => import('./pages/login')) }
 ];
 
