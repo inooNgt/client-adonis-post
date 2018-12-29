@@ -27,7 +27,6 @@ class PageContainer extends React.Component {
     API.user()
       .then(res => {
         if (res.status === 200) {
-          console.log('user', res.data);
           this.props.setLoginStatus(true);
         } else {
           this.props.setLoginStatus(false);

@@ -4,7 +4,8 @@ const APIMAP = {
   auth: {
     register: '/api/user/register',
     post: '/api/post',
-    user: '/api/user'
+    user: '/api/user',
+    userfile: '/api/user/file'
   }
 };
 export default APIMAP;

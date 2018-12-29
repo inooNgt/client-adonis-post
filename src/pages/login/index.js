@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Page from 'components/page';
 import API from 'utils/api';
+import config from 'utils/config';
+import actions from 'store/actions';
 
 import './index.scss';
 
