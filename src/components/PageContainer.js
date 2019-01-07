@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import API from 'utils/api';
-import actions from 'store/actions';
+import { setLoginStatus, setUser } from 'store/actions';
 
 const mapStateToProps = state => {
   return {
@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setLoginStatus: (...args) => dispatch(actions.setLoginStatus(...args))
+    setLoginStatus: (...args) => dispatch(setLoginStatus(...args)),
+    setUser: (...args) => dispatch(setUser(...args))
   };
 };
 
@@ -26,8 +27,10 @@ class PageContainer extends React.Component {
      */
     API.user()
       .then(res => {
-        if (res.status === 200) {
+        if (res.status === 200 && res.data) {
           this.props.setLoginStatus(true);
+
+          this.props.setUser(res.data);
         } else {
           this.props.setLoginStatus(false);
         }

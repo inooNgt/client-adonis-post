@@ -3,6 +3,7 @@ import APIMAP from 'utils/apimap';
 
 const API = {
   login: param => post(APIMAP.login, param),
+  avatar: param => post(APIMAP.auth.avatar, param),
   user: () => get(APIMAP.auth.user, {}),
   userfile: (data, optoins) =>
     post(APIMAP.auth.userfile, data, {

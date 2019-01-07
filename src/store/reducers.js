@@ -1,10 +1,11 @@
-import { loginStatus } from './actions';
+import { combineReducers } from 'redux';
 
 const initialState = {
-  logined: false
+  logined: false,
+  user: {}
 };
 
-const reducer = (state = initialState, action) => {
+const loginStatus = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_LOGINED':
       return { logined: action.logined };
@@ -13,4 +14,12 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+const user = (state = initialState, action) => {
+  if (action.type === 'SET_USER') return action.data;
+  return {};
+};
+
+export default combineReducers({
+  loginStatus,
+  user
+});

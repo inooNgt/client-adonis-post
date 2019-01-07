@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Page from 'components/page';
 import API from 'utils/api';
 import config from 'utils/config';
-import actions from 'store/actions';
+import { setLoginStatus } from 'store/actions';
 
 import './index.scss';
 
@@ -97,7 +97,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setLoginStatus: (...args) => dispatch(actions.setLoginStatus(...args))
+    setLoginStatus: (...args) => dispatch(setLoginStatus(...args))
   };
 };
 

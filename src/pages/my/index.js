@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { get } from 'utils/http';
 import API from 'utils/api';
 import Page from 'components/page';
+import { setUser } from 'store/actions';
 
+import defaultAvatar from './images/head.png';
 import './index.scss';
 
 class MyPage extends React.Component {
@@ -18,11 +20,16 @@ class MyPage extends React.Component {
     this.loadData();
   }
   fileChange(e) {
-    console.log(e);
     e.persist();
-    this.setState({
-      file: e.target.files[0]
-    });
+    console.log('file change');
+    this.setState(
+      {
+        file: e.target.files[0]
+      },
+      () => {
+        this.submit();
+      }
+    );
   }
   submit() {
     let formData = new FormData();
@@ -30,33 +37,55 @@ class MyPage extends React.Component {
 
     API.userfile(formData)
       .then(res => {
-        console.log(res.data);
+        if (res.status === 200) {
+          let { data } = res;
+          console.log('upload file succeed!');
+          this.alterAvatar(data.url);
+        }
       })
       .catch(e => {
         console.log(e);
       });
   }
+  alterAvatar(avatar) {
+    if (!avatar) {
+      console.log('avatar can not be empty!');
+      return;
+    }
+    API.avatar({ avatar }).then(res => {
+      if (res.status === 200) {
+        let { data } = res;
+        console.log('alterAvatar succeed!');
+        this.props.setUser(data);
+      }
+    });
+  }
   loadData() {
     API.user().then(res => {
       if (res.status === 200) {
         let { data } = res;
-        this.setState({
-          user: data.user
-        });
+        this.props.setUser(data);
       }
     });
   }
   render() {
-    let { user } = this.state;
+    let { user } = this.props;
     return (
       <Page>
-        <form action='javascript:;'>
-          <input type='file' name='userfile' onChange={this.fileChange} />
-          <button type='submit' onClick={this.submit}>
-            {' '}
-            Submit{' '}
-          </button>
-        </form>
+        <div className='my-avatar'>
+          <img
+            className='my-avatar-img'
+            src={(user && user.avatar) || defaultAvatar}
+          />
+          <input
+            className='my-userfile'
+            type='file'
+            name='userfile'
+            onChange={this.fileChange}
+          />
+        </div>
+        <h4 className='my-name'>{user && user.username}</h4>
+        <div className='my-email'>{user && user.email}</div>
       </Page>
     );
   }
@@ -64,8 +93,18 @@ class MyPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    logined: state.logined
+    logined: state.loginStatus.logined,
+    user: state.user
   };
 };
 
-export default connect(mapStateToProps)(MyPage);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    setUser: (...args) => dispatch(setUser(...args))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyPage);

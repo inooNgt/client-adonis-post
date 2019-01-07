@@ -18,6 +18,7 @@ class Nav extends React.Component {
   };
   componentWillReceiveProps(newProps) {
     let { logined } = newProps;
+    console.log('nav newProps', newProps);
     if (logined) {
       this.setState({
         list: [
@@ -62,7 +63,7 @@ class Nav extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    logined: state.logined
+    logined: state.loginStatus.logined
   };
 };
 
