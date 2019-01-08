@@ -16,6 +16,9 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  ul {
+    margin: 0;
+  }
   .nav-link {
     height: $navHeight;
     line-height: $navHeight;

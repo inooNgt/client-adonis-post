@@ -7,6 +7,10 @@ const routes = [
     component: asyncComponent(() => import('./pages/home'))
   },
   { path: '/my', component: asyncComponent(() => import('./pages/my')) },
+  {
+    path: '/create',
+    component: asyncComponent(() => import('./pages/create'))
+  },
   { path: '/login', component: asyncComponent(() => import('./pages/login')) }
 ];
 

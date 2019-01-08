@@ -21,6 +21,7 @@ class MyPage extends React.Component {
   }
   fileChange(e) {
     e.persist();
+    /* todo bug */
     console.log('file change');
     this.setState(
       {

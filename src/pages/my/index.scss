@@ -3,8 +3,7 @@
   height: 100px;
   border-radius: 50%;
   background: #eee;
-  margin: 40px auto;
-  cursor: pointer;
+  margin: 40px auto 20px;
   position: relative;
   overflow: hidden;
   .my-avatar-img {
@@ -19,6 +18,7 @@
     height: 100%;
     opacity: 0;
     z-index: 1;
+    cursor: pointer;
   }
 }
 

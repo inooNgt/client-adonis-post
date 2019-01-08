@@ -18,7 +18,6 @@ class Nav extends React.Component {
   };
   componentWillReceiveProps(newProps) {
     let { logined } = newProps;
-    console.log('nav newProps', newProps);
     if (logined) {
       this.setState({
         list: [
@@ -27,7 +26,7 @@ class Nav extends React.Component {
             path: '/'
           },
           {
-            title: 'MY',
+            title: 'My',
             path: '/my'
           }
         ]
@@ -40,7 +39,7 @@ class Nav extends React.Component {
     return (
       <nav className={`page-nav ${className || ''}`}>
         <div className='nav-inner'>
-          <div className='nav-logo'>Adonis Post</div>
+          <div className='nav-logo'>inooNgt</div>
           <ul>
             {list.map((item, index) => (
               <NavLink
