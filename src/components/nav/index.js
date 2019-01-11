@@ -8,7 +8,7 @@ class Nav extends React.Component {
     list: [
       {
         title: 'Posts',
-        path: '/'
+        path: '/post'
       },
       {
         title: 'Login',
@@ -23,7 +23,7 @@ class Nav extends React.Component {
         list: [
           {
             title: 'Posts',
-            path: '/'
+            path: '/post'
           },
           {
             title: 'My',

@@ -15,7 +15,7 @@ export default class Editor extends React.Component {
     return (
       <textarea
         className='post-editor'
-        placeholder='请输入内容...'
+        placeholder='Enter contnet here...'
         onInput={this.handleInput}
       />
     );

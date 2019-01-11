@@ -5,24 +5,24 @@ import Page from 'components/page';
 
 import './index.scss';
 
+function Child({ match }) {
+  return (
+    <div>
+      <h3>ID: {match.params.id}</h3>
+    </div>
+  );
+}
+
 class HomePage extends React.Component {
   state = { posts: [] };
   componentDidMount() {
+    console.log(this.props);
     this.loadData();
   }
-  loadData() {
-    API.posts().then(res => {
-      if (res.status === 200) {
-        let { data } = res;
-        this.setState({
-          posts: data.posts
-        });
-      }
-    });
-  }
+  loadData() {}
   render() {
     let { posts } = this.state;
-    return <Page>home</Page>;
+    return <Page>post detail</Page>;
   }
 }
 

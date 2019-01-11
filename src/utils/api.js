@@ -9,7 +9,8 @@ const API = {
     post(APIMAP.auth.userfile, data, {
       headers: { 'Content-Type': 'image/png' }
     }),
-  posts: () => get(APIMAP.posts, {})
+  posts: () => get(APIMAP.posts, {}),
+  create: param => post(APIMAP.auth.create, param)
 };
 
 export default API;

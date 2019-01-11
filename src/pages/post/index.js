@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import API from 'utils/api';
 import Page from 'components/page';
-
+import { Link } from 'react-router-dom';
 import './index.scss';
 
 class HomePage extends React.Component {
@@ -22,7 +22,19 @@ class HomePage extends React.Component {
   }
   render() {
     let { posts } = this.state;
-    return <Page>home</Page>;
+    return (
+      <Page>
+        {posts.map((item, k) => {
+          return (
+            <h4 key={item.id}>
+              <Link to={{ pathname: `/postdetail`, search: `?id=${item.id}` }}>
+                {k + 1}、{item.post_title}
+              </Link>
+            </h4>
+          );
+        })}
+      </Page>
+    );
   }
 }
 

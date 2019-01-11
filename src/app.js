@@ -11,6 +11,18 @@ import PageContainer from 'components/PageContainer';
 
 import './scss/index.scss';
 
+const RouteWithSubRoutes = route => {
+  return (
+    <Route
+      path={route.path}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+};
+
 class App extends React.Component {
   render() {
     return (
@@ -32,13 +44,8 @@ class App extends React.Component {
                        */}
                       <div>
                         <Switch location={location}>
-                          {routes.map(route => (
-                            <Route
-                              key={route.path}
-                              path={route.path}
-                              exact={route.exact}
-                              component={route.component}
-                            />
+                          {routes.map((route, i) => (
+                            <RouteWithSubRoutes key={i} {...route} />
                           ))}
                           <Route
                             render={({ location }) => (

@@ -74,10 +74,9 @@ class MyPage extends React.Component {
     return (
       <Page>
         <div className='my-avatar'>
-          <img
-            className='my-avatar-img'
-            src={(user && user.avatar) || defaultAvatar}
-          />
+          {user && user.avatar ? (
+            <img className='my-avatar-img' src={user && user.avatar} />
+          ) : null}
           <input
             className='my-userfile'
             type='file'

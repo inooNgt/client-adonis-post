@@ -6,7 +6,8 @@ const APIMAP = {
     post: '/api/post',
     user: '/api/user',
     avatar: '/api/user/avatar',
-    userfile: '/api/user/file'
+    userfile: '/api/user/file',
+    create: '/api/post/create'
   }
 };
 export default APIMAP;

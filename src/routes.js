@@ -8,6 +8,14 @@ const routes = [
   },
   { path: '/my', component: asyncComponent(() => import('./pages/my')) },
   {
+    path: '/post',
+    component: asyncComponent(() => import('./pages/post'))
+  },
+  {
+    path: '/postdetail',
+    component: asyncComponent(() => import('./pages/postdetail'))
+  },
+  {
     path: '/create',
     component: asyncComponent(() => import('./pages/create'))
   },
