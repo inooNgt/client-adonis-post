@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { get } from 'utils/http';
 import API from 'utils/api';
 import Page from 'components/page';
 import { setUser } from 'store/actions';
 
-import defaultAvatar from './images/head.png';
 import './index.scss';
 
 class MyPage extends React.Component {
@@ -17,8 +15,24 @@ class MyPage extends React.Component {
   }
 
   componentDidMount() {
+    // if (!this.props.logined) {
+    //   this.props.history.replace('/login');
+    //   return;
+    // }
+
     this.loadData();
   }
+
+  componentWillReceiveProps(newProps) {
+    let { logined } = newProps;
+    if (!logined) {
+      this.props.history.replace('/login');
+      return;
+    }
+  }
+
+  componentDidUpdate() {}
+
   fileChange(e) {
     e.persist();
     /* todo bug */
@@ -81,6 +95,7 @@ class MyPage extends React.Component {
             className='my-userfile'
             type='file'
             name='userfile'
+            title='点击上传'
             onChange={this.fileChange}
           />
         </div>

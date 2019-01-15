@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './heighlight.scss';
+import 'scss/heighlight.scss';
 
 export default class Viewer extends React.Component {
   genarateInnerHtml() {
@@ -9,7 +9,7 @@ export default class Viewer extends React.Component {
   render() {
     return (
       <section
-        className='post-viewer'
+        className='post-viewer rich-text'
         dangerouslySetInnerHTML={this.genarateInnerHtml()}
       />
     );

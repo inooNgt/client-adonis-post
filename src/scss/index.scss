@@ -22,3 +22,12 @@
   opacity: 0;
   transition: 100ms ease-in;
 }
+
+.rich-text {
+  ul {
+    list-style-type: disc;
+  }
+  img {
+    max-width: 100%;
+  }
+}

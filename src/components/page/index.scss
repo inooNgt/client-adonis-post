@@ -1,10 +1,11 @@
+@import 'scss/base/fun';
 .page {
   position: absolute;
   top: 80px;
   left: 50%;
-  margin-left: -450px;
-  padding: 20px;
-  width: 900px;
+  margin-left: -$innerWidth/2;
+  padding: $gap-padding;
+  width: $innerWidth;
   background: #fff;
   border-radius: 6px;
   min-height: 600px;

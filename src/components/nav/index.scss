@@ -11,25 +11,52 @@
 }
 
 .nav-inner {
-  width: 900px;
+  width: $innerWidth;
   height: $navHeight;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  height: $navHeight;
+  line-height: $navHeight;
+  .nav-logo {
+    font-size: 28px;
+  }
+  .nav-bar {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   ul {
     margin: 0;
   }
   .nav-link {
-    height: $navHeight;
-    line-height: $navHeight;
     padding: 0 10px;
     display: inline-block;
+
     &.nav-link-active {
       color: $color-main;
     }
   }
-  .nav-logo {
-    height: $navHeight;
-    line-height: $navHeight;
+}
+
+.nav-bar-right {
+  display: flex;
+  align-items: center;
+  .nav-add {
+    padding: 0 10px;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .nav-avatar-link {
+    display: flex;
+    align-items: center;
+  }
+  .nav-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 0 0 0 10px;
   }
 }

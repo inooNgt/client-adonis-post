@@ -1,0 +1,31 @@
+@import 'scss/base/fun';
+
+.posts-list {
+  margin: 0;
+  padding: 0;
+}
+
+.posts-item {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-border;
+  &:last-child {
+    border: none;
+  }
+}
+
+.posts-item-title {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  a:hover {
+    color: $color-main;
+  }
+}
+
+.posts-item-info {
+  font-size: 14px;
+  color: $color-gray;
+  & > span {
+    margin-right: 20px;
+  }
+}

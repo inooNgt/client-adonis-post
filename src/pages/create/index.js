@@ -61,7 +61,14 @@ class CreatePage extends React.Component {
     API.create(params)
       .then(res => {
         if (res.status == 200) {
-          console.log('发布成功');
+          let { data } = res;
+          console.log('发布成功!');
+          if (data.id) {
+            this.props.history.replace({
+              pathname: '/postdetail',
+              search: `?id=${data.id}`
+            });
+          }
         }
       })
       .catch(e => {

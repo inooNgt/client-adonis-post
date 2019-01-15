@@ -4,8 +4,19 @@
 $color-main: #3f51b5 !default;
 $color-border: #eee !default;
 $color-bg: #f8f8f8 !default;
+$color-gray: #888 !default;
 
 /**
  * height
  */
-$navHeight: 60px !default;
+$navHeight: 56px !default;
+
+/**
+ * width
+ */
+$innerWidth: 900px !default;
+
+/**
+ * Gap
+ */
+$gap-padding: 40px !default;

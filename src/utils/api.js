@@ -10,6 +10,7 @@ const API = {
       headers: { 'Content-Type': 'image/png' }
     }),
   posts: () => get(APIMAP.posts, {}),
+  postdetail: param => get(APIMAP.postdetail, param),
   create: param => post(APIMAP.auth.create, param)
 };
 
