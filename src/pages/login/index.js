@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Page from 'components/page';
 import API from 'utils/api';
 import config from 'utils/config';
-import { setLoginStatus } from 'store/actions';
+import { setLoginStatus, setUser } from 'store/actions';
 
 import './index.scss';
 
@@ -38,6 +38,12 @@ class LoginPage extends React.Component {
           localStorage.setItem(config.keys.token, token);
           this.props.setLoginStatus(true);
           history.replace('/');
+          API.user().then(res => {
+            if (res.status === 200) {
+              let { data } = res;
+              this.props.setUser(data);
+            }
+          });
         }
       })
       .catch(e => {
@@ -97,7 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setLoginStatus: (...args) => dispatch(setLoginStatus(...args))
+    setLoginStatus: (...args) => dispatch(setLoginStatus(...args)),
+    setUser: (...args) => dispatch(setUser(...args))
   };
 };
 

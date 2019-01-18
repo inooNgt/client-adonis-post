@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "webpack-serve --config build/webpack.dev.js",
-    "build": "node scripts/build.js -p"
+    "build": "webpack -p --config build/webpack.dev.js"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
@@ -46,6 +46,7 @@
     "redux-devtools": "^3.5.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",

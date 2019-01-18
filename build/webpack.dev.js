@@ -5,9 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const proxy = require('http-proxy-middleware');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const isProduction = process.argv.indexOf('-p') !== -1;
-const buildPath = path.join(__dirname, '../dist/demo');
+const buildPath = path.join(__dirname, '../dist');
 const sourcePath = path.join(__dirname, '../src');
 
 // Common plugins
@@ -113,28 +113,6 @@ const rules = [
   }
 ];
 
-if (isProduction) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true
-      },
-      output: {
-        comments: false
-      }
-    })
-  );
-}
-
 const PORT = 9091;
 
 const resolve = p => path.resolve(__dirname, p);
@@ -171,6 +149,15 @@ module.exports = {
     }
   },
   plugins,
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: false
+        }
+      })
+    ]
+  },
   /* https://github.com/webpack-contrib/webpack-serve */
   serve: {
     port: PORT,

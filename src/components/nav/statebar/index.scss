@@ -1,0 +1,19 @@
+.nav-statebar {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  .nav-statebar-add {
+    padding: 0 10px;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .nav-statebar-avatar {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 0 0 0 10px;
+  }
+}

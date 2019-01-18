@@ -6,7 +6,7 @@ import { setLoginStatus, setUser } from 'store/actions';
 
 const mapStateToProps = state => {
   return {
-    logined: state.logined
+    logined: state.loginStatus.logined
   };
 };
 

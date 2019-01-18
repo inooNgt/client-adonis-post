@@ -38,25 +38,3 @@
     }
   }
 }
-
-.nav-bar-right {
-  display: flex;
-  align-items: center;
-  .nav-add {
-    padding: 0 10px;
-    display: inline-block;
-    font-size: 28px;
-    font-weight: 600;
-  }
-  .nav-avatar-link {
-    display: flex;
-    align-items: center;
-  }
-  .nav-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    margin: 0 0 0 10px;
-  }
-}

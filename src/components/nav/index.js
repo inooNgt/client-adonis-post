@@ -1,37 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Tooltip from '@material-ui/core/Tooltip';
 import { NavLink, Link } from 'react-router-dom';
+import StateBar from './statebar';
 import './index.scss';
 
 const DEF_NAV_LIST = [
   {
     title: 'Posts',
     path: '/'
-  },
-  {
-    title: 'Login',
-    path: '/login'
   }
 ];
 
-let loginNavList = [...DEF_NAV_LIST];
-loginNavList.splice(1, 1, {
-  title: 'My',
-  path: '/my'
-});
-
-const StateBar = ({ user }) => {
+const LogoutedState = () => {
   return (
-    <div className='nav-bar-right'>
-      <Link to='/create' className='nav-add'>
-        +
-      </Link>
-      <Link to='/my' className='nav-avatar-link'>
-        {user && user.avatar ? (
-          <img className='nav-avatar' src={user && user.avatar} />
-        ) : null}
-      </Link>
-    </div>
+    <React.Fragment>
+      <Link to='/Login'>Login</Link>
+    </React.Fragment>
   );
 };
 
@@ -40,9 +25,6 @@ class Nav extends React.Component {
   componentWillReceiveProps(newProps) {
     let { logined } = newProps;
     if (logined) {
-      this.setState({
-        list: loginNavList
-      });
     }
   }
   render() {
@@ -69,7 +51,7 @@ class Nav extends React.Component {
                 </NavLink>
               ))}
             </ul>
-            {logined ? <StateBar user={user} /> : null}
+            {logined ? <StateBar user={user} /> : <LogoutedState />}
           </div>
         </div>
       </nav>
