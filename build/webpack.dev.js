@@ -98,10 +98,17 @@ const rules = [
       }
     ]
   },
-  // {
-  //   test: /\.(png|gif|jpg|svg)$/,
-  //   use: 'url-loader?limit=20480&name=static/[name]-[hash].[ext]'
-  // },
+  /*   {
+    test: /\.(png|gif|jpg|svg)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 20480
+        }
+      }
+    ]
+  }, */
   {
     test: /\.(png|jpg|gif|svg)$/,
     use: [

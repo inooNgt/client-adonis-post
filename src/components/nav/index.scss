@@ -18,7 +18,14 @@
   height: $navHeight;
   line-height: $navHeight;
   .nav-logo {
-    font-size: 28px;
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 24px;
+  }
+  .nav-logo-image {
+    width: 32px;
+    height: 32px;
   }
   .nav-bar {
     flex: 1 0 auto;

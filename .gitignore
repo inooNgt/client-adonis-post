@@ -4,6 +4,7 @@
 .idea
 .vscode
 dist
+dist.zip
 es
 lib
 node_modules

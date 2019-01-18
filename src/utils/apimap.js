@@ -2,6 +2,7 @@ const APIMAP = {
   login: '/api/user/login',
   posts: '/api/posts',
   postdetail: '/api/posts/detail',
+  findUserByname: '/api/user/find',
   auth: {
     register: '/api/user/register',
     post: '/api/post',

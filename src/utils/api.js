@@ -6,6 +6,7 @@ const API = {
   avatar: param => post(APIMAP.auth.avatar, param),
   logout: param => post(APIMAP.auth.logout, param),
   user: () => get(APIMAP.auth.user, {}),
+  findUser: param => get(APIMAP.findUserByname, param),
   userfile: (data, optoins) =>
     post(APIMAP.auth.userfile, data, {
       headers: { 'Content-Type': 'image/png' }

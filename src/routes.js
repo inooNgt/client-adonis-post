@@ -7,6 +7,10 @@ const routes = [
     component: asyncComponent(() => import('./pages/home'))
   },
   { path: '/my', component: asyncComponent(() => import('./pages/my')) },
+  {
+    path: '/resume',
+    component: asyncComponent(() => import('./pages/resume'))
+  },
 
   {
     path: '/postdetail',

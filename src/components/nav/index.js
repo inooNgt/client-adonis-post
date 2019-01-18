@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tooltip from '@material-ui/core/Tooltip';
 import { NavLink, Link } from 'react-router-dom';
 import StateBar from './statebar';
 import './index.scss';
+
+import logoImage from './image/logo.png';
 
 const DEF_NAV_LIST = [
   {
     title: 'Posts',
     path: '/'
+  },
+  {
+    title: 'Resume',
+    path: '/resume'
   }
 ];
 
@@ -34,7 +39,8 @@ class Nav extends React.Component {
       <nav className={`page-nav ${className || ''}`}>
         <div className='nav-inner'>
           <Link to='/' className='nav-logo'>
-            inooNgt
+            <img className='nav-logo-image' src={logoImage} alt='' />
+            <span>inooNgt</span>
           </Link>
           <div className='nav-bar'>
             <ul>
