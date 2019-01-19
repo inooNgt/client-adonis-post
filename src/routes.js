@@ -20,7 +20,11 @@ const routes = [
     path: '/create',
     component: asyncComponent(() => import('./pages/create'))
   },
-  { path: '/login', component: asyncComponent(() => import('./pages/login')) }
+  { path: '/login', component: asyncComponent(() => import('./pages/login')) },
+  {
+    path: '/register',
+    component: asyncComponent(() => import('./pages/register'))
+  }
 ];
 
 export default routes;

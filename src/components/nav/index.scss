@@ -43,5 +43,8 @@
     &.nav-link-active {
       color: $color-main;
     }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 }

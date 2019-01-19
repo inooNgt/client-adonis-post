@@ -12,10 +12,14 @@ import './index.scss';
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', email: '' };
   }
+
   nameChange = e => {
     this.setState({ username: e.target.value });
+  };
+  emailChange = e => {
+    this.setState({ email: e.target.value });
   };
 
   passwordChange = e => {
@@ -26,9 +30,10 @@ class LoginPage extends React.Component {
     e.preventDefault();
     let { history } = this.props;
 
-    API.login({
+    API.register({
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      email: this.state.email
     })
       .then(res => {
         if (res.status == 200) {
@@ -36,7 +41,7 @@ class LoginPage extends React.Component {
           let { token } = data;
           localStorage.setItem(config.keys.token, token);
           this.props.setLoginStatus(true);
-          history.replace('/');
+          history.replace('/my');
           API.user().then(res => {
             if (res.status === 200) {
               let { data } = res;
@@ -70,6 +75,15 @@ class LoginPage extends React.Component {
           </div>
           <div className='form-row'>
             <TextField
+              label='email'
+              name='name'
+              autoComplete='on'
+              onChange={this.emailChange}
+              defaultValue=''
+            />
+          </div>
+          <div className='form-row'>
+            <TextField
               label='password'
               name='password'
               type='password'
@@ -85,7 +99,7 @@ class LoginPage extends React.Component {
               size='large'
               type='submit'
             >
-              Login
+              Register
             </Button>
           </div>
         </form>

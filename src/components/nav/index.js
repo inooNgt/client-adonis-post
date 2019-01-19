@@ -12,16 +12,21 @@ const DEF_NAV_LIST = [
     path: '/'
   },
   {
-    title: 'Resume',
+    title: 'About',
     path: '/resume'
   }
 ];
 
 const LogoutedState = () => {
   return (
-    <React.Fragment>
-      <Link to='/Login'>Login</Link>
-    </React.Fragment>
+    <ul>
+      <Link className='nav-link' to='/login'>
+        Login
+      </Link>
+      <Link className='nav-link' to='/register'>
+        Register
+      </Link>
+    </ul>
   );
 };
 

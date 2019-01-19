@@ -2,26 +2,39 @@ import React from 'react';
 import { connect } from 'react-redux';
 import API from 'utils/api';
 import Page from 'components/page';
+import Pagination from 'components/pagination';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import './index.scss';
 
 class HomePage extends React.Component {
-  state = { posts: [] };
+  state = { posts: [], page: 1, lastPage: 999 };
   componentDidMount() {
-    this.loadData();
+    this.loadData(this.state.page);
   }
-  loadData() {
-    API.posts().then(res => {
+  loadData(page = 1) {
+    if (page > this.state.lastPage) {
+      console.log('没有数据了');
+      return;
+    }
+    API.posts({ params: { page, perPage: 10 } }).then(res => {
       if (res.status === 200) {
         let { data } = res;
-        this.setState({
-          posts: data.posts
+        this.setState((state, props) => {
+          return {
+            posts: data.data,
+            page: data.page,
+            lastPage: data.lastPage
+          };
         });
       }
     });
   }
+  onPageChagne = page => {
+    this.loadData(page);
+  };
   render() {
-    let { posts } = this.state;
+    let { posts, page, lastPage } = this.state;
     return (
       <Page>
         <ul className='posts-list'>
@@ -43,6 +56,12 @@ class HomePage extends React.Component {
             );
           })}
         </ul>
+        <Pagination
+          page={page}
+          lastPage={lastPage}
+          pageChange={this.onPageChagne}
+        />
+        <div />
       </Page>
     );
   }
