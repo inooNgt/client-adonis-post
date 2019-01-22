@@ -6,19 +6,16 @@ export default class Panel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { title: '' };
+
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleTitleChange = event => {
+  handleTitleChange(event) {
     this.setState({ title: event.target.value });
-  };
-  handleSubmit = () => {
+  }
+  handleSubmit() {
     if (typeof this.props.onSubmit === 'function') {
       this.props.onSubmit({ title: this.state.title });
-    }
-  };
-  componentWillReceiveProps(newProps) {
-    let { title } = newProps;
-    if (title) {
-      this.setState({ title });
     }
   }
   render() {

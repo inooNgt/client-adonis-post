@@ -7,6 +7,7 @@ const API = {
   avatar: param => post(APIMAP.auth.avatar, param),
   logout: param => post(APIMAP.auth.logout, param),
   user: param => get(APIMAP.auth.user, param),
+  myPosts: param => get(APIMAP.auth.myPosts, param),
   findUser: param => get(APIMAP.findUserByname, param),
   userfile: (data, optoins) =>
     post(APIMAP.auth.userfile, data, {
@@ -14,7 +15,8 @@ const API = {
     }),
   posts: param => get(APIMAP.posts, param),
   postdetail: param => get(APIMAP.postdetail, param),
-  create: param => post(APIMAP.auth.create, param)
+  create: param => post(APIMAP.auth.create, param),
+  updatePost: param => post(APIMAP.auth.updatePost, param)
 };
 
 export default API;

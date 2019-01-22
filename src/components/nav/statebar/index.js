@@ -57,7 +57,10 @@ class StateBar extends React.Component {
           onClose={this.closeMenu}
         >
           <MenuItem onClick={this.closeMenu}>
-            <Link to='/my'>My account</Link>
+            <Link to='/my'>My Account</Link>
+          </MenuItem>
+          <MenuItem onClick={this.closeMenu}>
+            <Link to='/myposts'>My Posts</Link>
           </MenuItem>
           <MenuItem onClick={this.logout}>Logout</MenuItem>
         </Menu>

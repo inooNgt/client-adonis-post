@@ -27,7 +27,9 @@ export default class Pagination extends React.Component {
         >
           上一页
         </Button>
-        <span className='pagination-num'>第{page}页</span>
+        <span className='pagination-num'>
+          第{page}/{lastPage}页
+        </span>
         <Button
           size='small'
           variant='outlined'

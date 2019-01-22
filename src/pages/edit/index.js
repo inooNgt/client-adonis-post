@@ -2,7 +2,6 @@ import React from 'react';
 import marked from 'marked';
 import highlight from 'highlight.js';
 import { connect } from 'react-redux';
-import Qs from 'qs';
 import API from 'utils/api';
 import Editor from './editor';
 import Viewer from './viewer';
@@ -15,36 +14,13 @@ class CreatePage extends React.Component {
     super(props);
     this.state = {
       content: '',
-      mdContent: '',
-      post: '',
-      isEidt: false,
-      postId: ''
+      mdContent: ''
     };
+    this.onEditorChange = this.onEditorChange.bind(this);
+    this.onPostSubmit = this.onPostSubmit.bind(this);
   }
-
-  componentDidMount() {
-    let query = Qs.parse(this.props.location.search.slice(1));
-    console.log('query', query);
-    if (query.type == 'edit' && query.id) {
-      this.loadData(query.id);
-      this.setState({
-        isEidt: true,
-        postId: query.id
-      });
-    }
-  }
-  loadData(id) {
-    API.postdetail({ params: { id } }).then(res => {
-      if (res.status === 200) {
-        let { data } = res;
-        this.setState({
-          post: data
-        });
-        this.onEditorChange(data.post_body_md);
-      }
-    });
-  }
-  onEditorChange = data => {
+  componentDidMount() {}
+  onEditorChange(data) {
     /**
      *  marked 配置
      */
@@ -68,8 +44,8 @@ class CreatePage extends React.Component {
       content,
       mdContent: data
     });
-  };
-  onPostSubmit = ({ title }) => {
+  }
+  onPostSubmit({ title }) {
     let { content, mdContent } = this.state;
 
     if (!title || !content || !mdContent) {
@@ -78,15 +54,11 @@ class CreatePage extends React.Component {
     }
 
     let params = {
-      id: this.state.postId,
       post_title: title,
       post_body: content,
       post_body_md: mdContent
     };
-
-    let submitAPI = this.state.isEidt ? API.updatePost : API.create;
-
-    submitAPI(params)
+    API.create(params)
       .then(res => {
         if (res.status == 200) {
           let { data } = res;
@@ -102,16 +74,13 @@ class CreatePage extends React.Component {
       .catch(e => {
         console.log(e);
       });
-  };
+  }
   render() {
-    let { content, post } = this.state;
+    let { content } = this.state;
     return (
       <div className='create-container'>
-        <Panel onSubmit={this.onPostSubmit} title={post && post.post_title} />
-        <Editor
-          change={this.onEditorChange}
-          content={post && post.post_body_md}
-        />
+        <Panel onSubmit={this.onPostSubmit} />
+        <Editor change={this.onEditorChange} />
         <Viewer content={content} />
       </div>
     );

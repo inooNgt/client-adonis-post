@@ -32,8 +32,11 @@ class MyPage extends React.Component {
             <img className='my-avatar-img' src={user && user.avatar} />
           ) : null}
         </div>
-        <h4 className='my-name'>{user && user.username}</h4>
-        <div className='my-email'>{user && user.email}</div>
+        <h4 className='my-name'>inooNgt</h4>
+        <div className='my-info-box'>
+          <div className='my-info-item'>Email: inoongt@gmail.com</div>
+          <div className='my-info-item'>Gibhub: https://github.com/inooNgt</div>
+        </div>
       </Page>
     );
   }

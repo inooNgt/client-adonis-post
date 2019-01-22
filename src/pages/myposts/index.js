@@ -37,20 +37,33 @@ class HomePage extends React.Component {
     let { posts, page, lastPage } = this.state;
     return (
       <Page>
-        <ul className='posts-list'>
+        <ul className='my-posts-list'>
           {posts.map((item, k) => {
             return (
               <li className='posts-item' key={item.id}>
-                <h4 className='posts-item-title'>
+                <div className='posts-msg'>
+                  {' '}
+                  <h4 className='posts-item-title'>
+                    <Link
+                      to={{ pathname: `/postdetail`, search: `?id=${item.id}` }}
+                    >
+                      {item.post_title}
+                    </Link>
+                  </h4>
+                  <div className='posts-item-info'>
+                    <span> {item.created_at}</span>
+                  </div>
+                </div>
+                <div className='post-ctrl'>
                   <Link
-                    to={{ pathname: `/postdetail`, search: `?id=${item.id}` }}
+                    className='post-ctrl-btn'
+                    to={{
+                      pathname: `/create`,
+                      search: `?type=edit&&id=${item.id}`
+                    }}
                   >
-                    {item.post_title}
+                    Edit
                   </Link>
-                </h4>
-                <div className='posts-item-info'>
-                  <span>{item.author}</span>
-                  <span> {item.created_at}</span>
                 </div>
               </li>
             );

@@ -14,7 +14,6 @@ class PostDetail extends React.Component {
   }
   componentDidMount() {
     let query = Qs.parse(this.props.location.search.slice(1));
-    console.log(query);
     if (query && query.id !== undefined) this.loadData(query.id);
   }
   loadData(id) {

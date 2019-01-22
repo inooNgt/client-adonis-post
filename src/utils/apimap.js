@@ -7,10 +7,12 @@ const APIMAP = {
   auth: {
     post: '/api/post',
     user: '/api/user',
+    myPosts: '/api/user/posts',
     logout: '/api/user/logout',
     avatar: '/api/user/avatar',
     userfile: '/api/user/file',
-    create: '/api/post/create'
+    create: '/api/post/create',
+    updatePost: '/api/post/update'
   }
 };
 export default APIMAP;
