@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import API from 'utils/api';
 import Page from 'components/page';
 import Pagination from 'components/pagination';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import AlertDialog from 'components/AlertDialog';
+import PostItem from './components/postItem';
+
 import './index.scss';
 
 class HomePage extends React.Component {
   state = { posts: [], page: 1, lastPage: 999 };
+  deleteId = '';
   componentDidMount() {
     this.loadData(this.state.page);
   }
@@ -30,6 +32,20 @@ class HomePage extends React.Component {
       }
     });
   }
+  onDelete = id => {
+    let alertIns = this.refs['alertRef'];
+    alertIns && alertIns.show();
+    this.deleteId = id;
+  };
+  onDeleteSure = () => {
+    API.deletePost({ data: { id: this.deleteId } }).then(res => {
+      if (res.status === 200) {
+        console.log('删除成功');
+        this.deleteId = '';
+        this.loadData(this.state.page);
+      }
+    });
+  };
   onPageChagne = page => {
     this.loadData(page);
   };
@@ -40,32 +56,11 @@ class HomePage extends React.Component {
         <ul className='my-posts-list'>
           {posts.map((item, k) => {
             return (
-              <li className='posts-item' key={item.id}>
-                <div className='posts-msg'>
-                  {' '}
-                  <h4 className='posts-item-title'>
-                    <Link
-                      to={{ pathname: `/postdetail`, search: `?id=${item.id}` }}
-                    >
-                      {item.post_title}
-                    </Link>
-                  </h4>
-                  <div className='posts-item-info'>
-                    <span> {item.created_at}</span>
-                  </div>
-                </div>
-                <div className='post-ctrl'>
-                  <Link
-                    className='post-ctrl-btn'
-                    to={{
-                      pathname: `/create`,
-                      search: `?type=edit&&id=${item.id}`
-                    }}
-                  >
-                    Edit
-                  </Link>
-                </div>
-              </li>
+              <PostItem
+                postItem={item}
+                deletePost={this.onDelete}
+                key={item.id}
+              />
             );
           })}
         </ul>
@@ -76,6 +71,13 @@ class HomePage extends React.Component {
             pageChange={this.onPageChagne}
           />
         ) : null}
+        <AlertDialog
+          ref='alertRef'
+          title='Warning'
+          content='Are you sure to delete this post? It can not be restored after deletion.'
+          onSure={this.onDeleteSure}
+          sureText='DELETE'
+        />
       </Page>
     );
   }

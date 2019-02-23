@@ -1,0 +1,45 @@
+@import 'scss/base/fun';
+.posts-item {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &:last-child {
+    border: none;
+  }
+}
+.posts-msg {
+  max-width: 60%;
+}
+.posts-ctrl {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-ctrl-btn {
+  padding: 0 10px;
+  justify-self: end;
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.posts-item-title {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 0 0 10px 0;
+  @extend %text-over;
+  a:hover {
+    color: $color-main;
+  }
+}
+
+.posts-item-info {
+  font-size: 14px;
+  color: $color-gray;
+  & > span {
+    margin-right: 20px;
+  }
+}

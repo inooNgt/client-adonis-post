@@ -13,7 +13,7 @@ const DEF_NAV_LIST = [
   },
   {
     title: 'About',
-    path: '/resume'
+    path: '/about'
   }
 ];
 

@@ -12,7 +12,8 @@ const APIMAP = {
     avatar: '/api/user/avatar',
     userfile: '/api/user/file',
     create: '/api/post/create',
-    updatePost: '/api/post/update'
+    updatePost: '/api/post/update',
+    deletePost: '/api/post/delete'
   }
 };
 export default APIMAP;

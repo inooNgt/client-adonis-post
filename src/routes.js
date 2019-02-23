@@ -12,8 +12,8 @@ const routes = [
     component: asyncComponent(() => import('./pages/myposts'))
   },
   {
-    path: '/resume',
-    component: asyncComponent(() => import('./pages/resume'))
+    path: '/about',
+    component: asyncComponent(() => import('./pages/about'))
   },
 
   {

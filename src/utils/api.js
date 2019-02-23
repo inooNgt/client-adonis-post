@@ -1,4 +1,4 @@
-import { get, post } from 'utils/http';
+import { get, post, del } from 'utils/http';
 import APIMAP from 'utils/apimap';
 
 const API = {
@@ -16,7 +16,8 @@ const API = {
   posts: param => get(APIMAP.posts, param),
   postdetail: param => get(APIMAP.postdetail, param),
   create: param => post(APIMAP.auth.create, param),
-  updatePost: param => post(APIMAP.auth.updatePost, param)
+  updatePost: param => post(APIMAP.auth.updatePost, param),
+  deletePost: param => del(APIMAP.auth.deletePost, param)
 };
 
 export default API;
