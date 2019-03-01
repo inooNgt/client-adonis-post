@@ -15,10 +15,10 @@ class MyPage extends React.Component {
   }
 
   componentDidMount() {
-    // if (!this.props.logined) {
-    //   this.props.history.replace('/login');
-    //   return;
-    // }
+    if (!this.props.logined) {
+      this.props.history.replace('/login');
+      return;
+    }
 
     this.loadData();
   }

@@ -150,6 +150,7 @@ module.exports = {
     alias: {
       components: resolve('../src/components'),
       src: resolve('../src'),
+      static: resolve('../static'),
       utils: resolve('../src/utils'),
       store: resolve('../src/store'),
       scss: resolve('../src/scss')
