@@ -8,20 +8,9 @@ import store from 'store/store';
 import routes from './routes';
 import Nav from 'components/nav/index';
 import PageContainer from 'components/PageContainer';
+import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
 
 import './scss/index.scss';
-
-const RouteWithSubRoutes = route => {
-  return (
-    <Route
-      path={route.path}
-      render={props => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
-  );
-};
 
 class App extends React.Component {
   render() {
@@ -48,8 +37,11 @@ class App extends React.Component {
                             <RouteWithSubRoutes key={i} {...route} />
                           ))}
                           <Route
+                            path='*'
                             render={({ location }) => (
-                              <div>no match for path {location.pathname}</div>
+                              <div style={{ marginTop: 100 }}>
+                                Sorry, no match for path {location.pathname}
+                              </div>
                             )}
                           />
                         </Switch>

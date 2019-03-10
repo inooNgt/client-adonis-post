@@ -12,6 +12,10 @@ const DEF_NAV_LIST = [
     path: '/'
   },
   {
+    title: 'Note',
+    path: '/note'
+  },
+  {
     title: 'About',
     path: '/about'
   }
@@ -22,9 +26,6 @@ const LogoutedState = () => {
     <ul>
       <Link className='nav-link' to='/login'>
         Login
-      </Link>
-      <Link className='nav-link' to='/register'>
-        Register
       </Link>
     </ul>
   );

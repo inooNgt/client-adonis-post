@@ -3,18 +3,18 @@ import React from 'react';
 export default class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.handleInput = this.handleInput.bind(this);
   }
-  handleInput(e) {
+  handleInput = e => {
     e.persist();
-    if (typeof this.props.change === 'function') {
-      this.props.change(e.target.value);
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(e.target.value);
     }
-  }
+  };
   render() {
+    const { className } = this.props;
     return (
       <textarea
-        className='post-editor'
+        className={className ? className : null}
         placeholder='Enter contnet here...'
         onInput={this.handleInput}
       />

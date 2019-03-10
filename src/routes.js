@@ -12,6 +12,15 @@ const routes = [
     component: asyncComponent(() => import('./pages/myposts'))
   },
   {
+    path: '/note',
+    component: asyncComponent(() => import('./pages/note')),
+    routes: []
+  },
+  {
+    path: '/editnote',
+    component: asyncComponent(() => import('./pages/editnote'))
+  },
+  {
     path: '/about',
     component: asyncComponent(() => import('./pages/about'))
   },

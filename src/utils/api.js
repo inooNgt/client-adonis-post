@@ -13,11 +13,15 @@ const API = {
     post(APIMAP.auth.userfile, data, {
       headers: { 'Content-Type': 'image/png' }
     }),
-  posts: param => get(APIMAP.posts, param),
-  postdetail: param => get(APIMAP.postdetail, param),
   create: param => post(APIMAP.auth.create, param),
+  posts: param => get(APIMAP.posts, param),
+  notes: param => get(APIMAP.notes, param),
+  postdetail: param => get(APIMAP.postdetail, param),
   updatePost: param => post(APIMAP.auth.updatePost, param),
-  deletePost: param => del(APIMAP.auth.deletePost, param)
+  deletePost: param => del(APIMAP.auth.deletePost, param),
+  createNote: param => post(APIMAP.auth.createNote, param),
+  notedetail: param => get(APIMAP.notedetail, param),
+  deleteNote: param => del(APIMAP.auth.deleteNote, param)
 };
 
 export default API;

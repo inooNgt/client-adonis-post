@@ -4,7 +4,7 @@ import highlight from 'highlight.js';
 import { connect } from 'react-redux';
 import Qs from 'qs';
 import API from 'utils/api';
-import Editor from './editor';
+import Editor from 'components/editor';
 import Viewer from './viewer';
 import Panel from './panel/panel';
 
@@ -64,6 +64,7 @@ class CreatePage extends React.Component {
     });
 
     let content = marked(data);
+
     this.setState({
       content,
       mdContent: data
@@ -109,8 +110,9 @@ class CreatePage extends React.Component {
       <div className='create-container'>
         <Panel onSubmit={this.onPostSubmit} title={post && post.post_title} />
         <Editor
-          change={this.onEditorChange}
+          onChange={this.onEditorChange}
           content={post && post.post_body_md}
+          className='post-editor'
         />
         <Viewer content={content} />
       </div>

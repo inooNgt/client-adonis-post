@@ -1,0 +1,35 @@
+@import 'scss/base/fun';
+
+%reset-input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: inherit;
+  border: 1px solid $color-border;
+  background: none;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.my-note {
+}
+.note-input-title {
+  @extend %reset-input;
+}
+.note-editor {
+  @extend %reset-input;
+  font-size: 16px;
+  resize: none;
+  min-height: 16rem;
+}
+.note-row-btn {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  button:last-child {
+    margin-left: 1rem;
+  }
+}
