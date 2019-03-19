@@ -6,7 +6,10 @@ import { setUser } from 'store/actions';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
+import NoteTitle from './NoteTitle';
+import NoteBody from './NoteBody';
 
+import 'scss/heighlight.scss';
 import './index.scss';
 
 class NotePage extends React.Component {
@@ -45,7 +48,9 @@ class NotePage extends React.Component {
       });
   }
   loadDataError = () => {};
+
   render() {
+    const { notes } = this.state;
     return (
       <Page>
         <div className='my-note'>
@@ -54,6 +59,10 @@ class NotePage extends React.Component {
               <AddIcon />
             </Fab>
           </Link>
+        </div>
+        <div className='note-list'>
+          <NoteTitle notes={notes} />
+          <NoteBody notes={notes} />
         </div>
       </Page>
     );
