@@ -4,20 +4,28 @@ export default class Editor extends React.Component {
   constructor(props) {
     super(props);
   }
+  state = { value: '' };
   handleInput = e => {
     e.persist();
+    let value = e.target.value;
+    this.setState({
+      value
+    });
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange(e.target.value);
+      this.props.onChange(value);
     }
   };
+  componentWillReceiveProps(props) {
+    this.setState({ value: props.content });
+  }
   render() {
-    const { className, content } = this.props;
+    const { className } = this.props;
     return (
       <textarea
         className={className ? className : null}
         placeholder='Enter contnet here...'
-        onInput={this.handleInput}
-        value={content || ''}
+        onChange={this.handleInput}
+        value={this.state.value}
       />
     );
   }
