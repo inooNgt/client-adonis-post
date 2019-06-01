@@ -11,12 +11,13 @@ export default class Editor extends React.Component {
     }
   };
   render() {
-    const { className } = this.props;
+    const { className, content } = this.props;
     return (
       <textarea
         className={className ? className : null}
         placeholder='Enter contnet here...'
         onInput={this.handleInput}
+        value={content || ''}
       />
     );
   }

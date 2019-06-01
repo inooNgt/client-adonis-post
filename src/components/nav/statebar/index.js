@@ -25,7 +25,6 @@ class StateBar extends React.Component {
     this.closeMenu();
     API.logout().then(res => {
       if (res.status === 200) {
-        console.log('登出成功!');
         this.props.setLoginStatus(false);
         this.props.setUser(null);
         this.props.history.replace('/');

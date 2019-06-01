@@ -178,7 +178,10 @@ module.exports = {
     add: (app, middleware, options) => {
       app.use(
         convert(
-          proxy('/api', { target: 'http://localhost:3333', changeOrigin: true })
+          proxy('/api', {
+            target: 'http://inoongt.tech',
+            changeOrigin: true
+          })
         )
       );
       app.use(convert(history({})));

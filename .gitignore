@@ -7,4 +7,4 @@ dist
 dist.zip
 es
 lib
-node_modules
+/node_modules
