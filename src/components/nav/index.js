@@ -12,8 +12,8 @@ const DEF_NAV_LIST = [
     path: '/'
   },
   {
-    title: 'Note',
-    path: '/note'
+    title: 'Files',
+    path: '/Files'
   },
   {
     title: 'About',

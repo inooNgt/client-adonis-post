@@ -6,12 +6,15 @@ const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const proxy = require('http-proxy-middleware');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const isProduction = process.argv.indexOf('-p') !== -1;
 const buildPath = path.join(__dirname, '../dist');
 const sourcePath = path.join(__dirname, '../src');
 
 // Common plugins
 const plugins = [
+  new CleanWebpackPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development')
@@ -179,7 +182,8 @@ module.exports = {
       app.use(
         convert(
           proxy('/api', {
-            target: 'http://inoongt.tech',
+            // target: 'http://inoongt.tech',
+            target: 'http://127.0.0.1:3333',
             changeOrigin: true
           })
         )
