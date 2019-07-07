@@ -37,6 +37,10 @@ const routes = [
   {
     path: '/register',
     component: asyncComponent(() => import('./pages/register'))
+  },
+  {
+    path: '/files',
+    component: asyncComponent(() => import('./pages/fileupload'))
   }
 ];
 

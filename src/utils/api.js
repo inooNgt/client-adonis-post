@@ -21,7 +21,14 @@ const API = {
   deletePost: param => del(APIMAP.auth.deletePost, param),
   createNote: param => post(APIMAP.auth.createNote, param),
   notedetail: param => get(APIMAP.notedetail, param),
-  deleteNote: param => del(APIMAP.auth.deleteNote, param)
+  deleteNote: param => del(APIMAP.auth.deleteNote, param),
+  fileupload: (data, optoins) =>
+    post(APIMAP.auth.fileupload, data, {
+      headers: {
+        'Content-Type': 'image/png'
+      }
+    }),
+  files: param => get(APIMAP.files, param)
 };
 
 export default API;

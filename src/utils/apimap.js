@@ -6,6 +6,7 @@ const APIMAP = {
   notes: '/api/notes',
   notedetail: '/api/notes/detail',
   findUserByname: '/api/user/find',
+  files: '/api/files',
   auth: {
     post: '/api/post',
     user: '/api/user',
@@ -18,7 +19,8 @@ const APIMAP = {
     deletePost: '/api/post/delete',
     createNote: '/api/note/create',
     updateNote: '/api/note/update',
-    deleteNote: '/api/note/delete'
+    deleteNote: '/api/note/delete',
+    fileupload: '/api/file/upload'
   }
 };
 export default APIMAP;

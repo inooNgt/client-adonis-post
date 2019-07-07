@@ -42,7 +42,9 @@ class MyPage extends React.Component {
         file: e.target.files[0]
       },
       () => {
-        this.submit();
+        this.submit().finally(() => {
+          e.target.value = '';
+        });
       }
     );
   }
@@ -50,7 +52,7 @@ class MyPage extends React.Component {
     let formData = new FormData();
     formData.append('file', this.state.file);
 
-    API.userfile(formData)
+    return API.userfile(formData)
       .then(res => {
         if (res.status === 200) {
           let { data } = res;

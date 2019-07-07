@@ -13,7 +13,7 @@ const DEF_NAV_LIST = [
   },
   {
     title: 'Files',
-    path: '/Files'
+    path: '/files'
   },
   {
     title: 'About',
