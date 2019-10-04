@@ -1,0 +1,32 @@
+@import 'scss/base/fun';
+
+.files-list {
+  margin: 0;
+  padding: 0;
+  min-height: 600px;
+  .files-item {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $color-border;
+    &:last-child {
+      border: none;
+    }
+  }
+
+  .files-item-title {
+    font-size: 22px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    a:hover {
+      color: $color-main;
+    }
+  }
+
+  .files-item-info {
+    font-size: 14px;
+    color: $color-gray;
+    & > span {
+      margin-right: 20px;
+    }
+  }
+}
